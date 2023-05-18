@@ -159,19 +159,23 @@ textarea{
   color: purple;
 }
 
-#para{
+.para{
   background-color: white;
   font-size: large;
-  min-height: 50vh;
-  padding: 20px 50px 20px 50px;
+  margin: 1px 50px 0px 50px;
+  padding: 5px 50px 5px 50px;
   
   
 
 }
 #para-container{
-  margin: 30px;
-  
-  
+  margin: 30px 200px 30px 200px;
+  background-color: purple;
+  border: solid;
+  border-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 

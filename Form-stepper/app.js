@@ -80,6 +80,10 @@
         }
     }
 
+
+
+
+
 // this list is going to store all the objects(each students data)
 const listOfStudents=[]
 
@@ -98,32 +102,70 @@ function studentObject(name, email, location, phoneNumber,course, gender, commen
     const pageComments=document.getElementById("comments")
     const pageRating=document.getElementById("rating")
     
-
+let numberOfRivews=0
 function addperson(){
     //the function below add each record to the database when you click on the submit button
+    numberOfRivews++
     const person1= studentObject(pagename.value, pageEmail.value, pageLocation.value,pagePhonenumber.value, pageCourse.options[pageCourse.selectedIndex].text, pageGender.options[pageGender.selectedIndex].text, pageComments.value, pageRating.value)
     listOfStudents.push(person1)
 
-    /*
-    const result= document.getElementById("result")
-    const contentContainer=document.createElement("div")
-    const contentChild =document.createElement("p")
-    contentChild.setAttribute('id','para')
-    contentContainer.setAttribute('id','para-container')
-     contentChild.textContent=`name: ${pagename.value},   E-mail: ${pageEmail.value},  Location: ${pageLocation.value}  Phone number: ${pagePhonenumber.value}, Course of choice: ${pageCourse.options[pageCourse.selectedIndex].text}  Gender:${pageGender.options[pageGender.selectedIndex].text} Comments: ${pageComments.value}   `
-    contentContainer.appendChild(contentChild)
-    result.appendChild(contentContainer)
-    */
+    for (item of listOfStudents){
+        const result= document.getElementById("result")
+        const contentContainer=document.createElement("div")
+        const contentname =document.createElement("p")
+        const contentemail=document.createElement("p")
+        const contentlocation=document.createElement("p")
+        const contentPhonenumber=document.createElement("p")
+        const contentcourse=document.createElement("p")
+        const contentgender=document.createElement("p")
+        const contentcomment=document.createElement("p")
+        const contentstar=document.createElement("p")
+        const deleteButton=document.createElement("button")
+        deleteButton.addEventListener('click', removereview)
+
+        
+
+
+        contentname.setAttribute('class','para')
+        contentemail.setAttribute('class','para')
+        contentlocation.setAttribute('class','para')
+        contentPhonenumber.setAttribute('class','para')
+        contentcourse.setAttribute('class','para')
+        contentgender.setAttribute('class','para')
+        contentcomment.setAttribute('class','para')
+        contentContainer.setAttribute('id','para-container')
+        contentstar.setAttribute('id','para-container')
+        deleteButton.setAttribute('type', 'button')
+        deleteButton.innerHTML="Delete"
+        
+        
+        contentname.textContent=`Name: ${pagename.value}`
+        contentemail.textContent=`E-mail: ${pageEmail.value}`
+        contentlocation.textContent=`Location: ${pageLocation.value}`
+        contentPhonenumber.textContent=`Phone number: ${pagePhonenumber.value}`
+        contentcourse.textContent=`Course of choice: ${pageCourse.options[pageCourse.selectedIndex].text}`
+        contentgender.textContent=`Gender:${pageGender.options[pageGender.selectedIndex].text}`
+        contentcomment.textContent=`Comments: ${pageComments.value}`
+        contentstar.textContent=`Star:  ${pageRating.value}`
+        
+        contentContainer.appendChild(contentname)
+        contentContainer.appendChild(contentemail)
+        contentContainer.appendChild(contentlocation)
+        contentContainer.appendChild(contentPhonenumber)
+        contentContainer.appendChild(contentcourse)
+        contentContainer.appendChild(contentgender)
+        contentContainer.appendChild(contentcomment)
+        contentContainer.appendChild(deleteButton)
+    // contentContainer.appendChild(contentstar)
+        result.appendChild(contentContainer)
+
+        function removereview(){
+            result.removeChild(contentContainer)
+            listOfStudents.pop(listOfStudents.indexOf())
+        }
+    }
    alert("Thank you for filling out the form")
     console.log(listOfStudents)
 }
 
-function fetchDatabase(){
-    for (item of listOfStudents){
-        const pa=item.name
-        console.log (pa)
-    }
-}
-fetchDatabase()
-console.log(pagename.value)
 
