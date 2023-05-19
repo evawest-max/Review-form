@@ -1,4 +1,5 @@
     const newBTN=document.createElement('button')
+    const btnDiv=document.getElementById("submitBTN")
     const nextbtn=document.getElementById("next")
     const btncontainer=document.getElementById("btncontainer")
     const toggle1=document.getElementById("toggle1")
@@ -7,6 +8,8 @@
     const form1=document.getElementById("form1")
     const form2=document.getElementById("form2")
     const form3=document.getElementById("form3")
+    const filltext=document.getElementById("filltext")
+    const previous=document.getElementById("previous")
     
     let addcount=0
 
@@ -21,8 +24,10 @@
                 form3.style.cssText='display: none;'
 
                 toggle1.style.cssText='background-color: white;'
-                toggle2.style.cssText='background-color: purple;'
+                toggle2.style.cssText='background-color: purple; color: white;'
                 toggle3.style.cssText='background-color: white;'
+                filltext.innerHTML='Please ensure you fill the form correctly'
+                previous.style.cssText='display: block;'
 
 
             }else if(addcount==2){
@@ -32,11 +37,15 @@
 
                 toggle1.style.cssText='background-color: white;'
                 toggle2.style.cssText='background-color: white; border: 2px solid purple; border-radius: 50px;'
-                toggle3.style.cssText='background-color: purple;'
+                toggle3.style.cssText='background-color: purple; color: white;'
+
+                
+                filltext.innerHTML='Let us know how you feel about the program.'
+                btnDiv.style.cssText='display:block'
 
                 nextbtn.remove()
 
-                const btnDiv=document.getElementById("submitBTN")
+                
                 newBTN.innerHTML="submit"
                 newBTN.setAttribute('id','submitBTN')
                 newBTN.addEventListener("click", addperson)
@@ -52,29 +61,32 @@
         // this fuction will also change to the correct form if the condition stated below is true
 
         addcount--
-        if (addcount== 1){
-            const btnDiv=document.getElementById("submitBTN")
-            btnDiv.removeChild(newBTN)
-        }
 
         if (addcount==1){
+            btnDiv.removeChild(newBTN)
             form1.style.cssText='display: none;'
             form2.style.cssText='display: block; background-color: white'
             form3.style.cssText='display: none;'
 
             toggle1.style.cssText='background-color: white;'
-            toggle2.style.cssText='background-color: purple;'
+            toggle2.style.cssText='background-color: purple; color: white;'
             toggle3.style.cssText='background-color: white;'
+
+            filltext.innerHTML='Please ensure you fill the form correctly'
 
             btncontainer.appendChild(nextbtn)
         }else if(addcount==0){
-            form1.style.cssText='display: block; background-color: white;'
+            form1.style.cssText='display: block; background-color: white; '
             form2.style.cssText='display: none;'
             form3.style.cssText='display: none;'
 
-            toggle1.style.cssText='background-color: purple;'
+            toggle1.style.cssText='background-color: purple; color: white;'
             toggle2.style.cssText='background-color: white;'
             toggle3.style.cssText='background-color: white;'
+            
+            filltext.innerHTML='Please ensure you fill the form correctly'
+            previous.style.cssText='display: none;'
+            
         }else if (addcount<0){
             addcount++
         }
@@ -164,8 +176,26 @@ function addperson(){
             listOfStudents.pop(listOfStudents.indexOf())
         }
     }
-   alert("Thank you for filling out the form")
+
+    filltext.textContent="Thank you for filling the form"
+    form1.style.cssText='display: none;'
+    form2.style.cssText='display: none; background-color: white'
+    form3.style.cssText='display: none;'
+    btnDiv.style.cssText='display: none;'
+
+    let storagecount=1
+    for (let i =0; i<listOfStudents.length; i++){
+        localStorage.setItem( "person "+ storagecount++, JSON.stringify(listOfStudents[i]) )
+    }
+
+    /*for (let i=0; i<localStorage.length; i++){
+        newlistOfStudent.push(localStorage.getItem( localStorage.key(i)))
+    }
+    console.log(newlistOfStudent)
+    */
+
     console.log(listOfStudents)
 }
 
 
+//console.log(localStorage.clear())
