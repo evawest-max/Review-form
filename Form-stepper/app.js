@@ -10,7 +10,15 @@
     const form3=document.getElementById("form3")
     const filltext=document.getElementById("filltext")
     const previous=document.getElementById("previous")
-    const rating = document.getElementById("rating");
+    const rating = document.querySelectorAll(".rating i");
+
+    rating.forEach((rate, index1)=>{
+        rate.addEventListener('click', ()=>{
+            rating.forEach((rate, index2)=>{
+                index1 >= index2 ? rate.classList.add("checked") : rate.classList.remove("checked")
+            })
+        })
+    })
     
     let addcount=0
 
