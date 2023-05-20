@@ -106,6 +106,8 @@ button{
   color: white;
   padding: 8px 20px;
   cursor: pointer;
+  box-shadow: inset -10px -10px 15px rgba(11, 8, 8, 0.5), 
+           inset 10px 10px 10px rgba(70, 70, 70, 0.12);
 }
 .btn-container{
   justify-content: space-between;
@@ -167,10 +169,8 @@ textarea{
 .para{
   background-color: white;
   font-size: large;
-  margin: 1px 50px 0px 50px;
+  margin: 1px 10px 0px 10px;
   padding: 5px 50px 5px 50px;
-  
-  
 
 }
 #para-container{

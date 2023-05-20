@@ -10,6 +10,7 @@
     const form3=document.getElementById("form3")
     const filltext=document.getElementById("filltext")
     const previous=document.getElementById("previous")
+    const rating = document.getElementById("rating");
     
     let addcount=0
 
@@ -196,6 +197,6 @@ function addperson(){
 
     console.log(listOfStudents)
 }
-
+ 
 
 //console.log(localStorage.clear())
