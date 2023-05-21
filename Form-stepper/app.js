@@ -12,13 +12,20 @@
     const previous=document.getElementById("previous")
     const rating = document.querySelectorAll(".rating i");
 
+        let star=0
     rating.forEach((rate, index1)=>{
+        let starclicks=0
+        star=starclicks
         rate.addEventListener('click', ()=>{
+            //console.log(index1)
+            starclicks=index1+1
+            console.log(starclicks)
             rating.forEach((rate, index2)=>{
                 index1 >= index2 ? rate.classList.add("checked") : rate.classList.remove("checked")
             })
         })
     })
+    console.log(star)
     
     let addcount=0
 
@@ -122,12 +129,52 @@ function studentObject(name, email, location, phoneNumber,course, gender, commen
     const pageGender=document.getElementById("gender")
     const pageComments=document.getElementById("comments")
     const pageRating=document.getElementById("rating")
+
+    let letters = /^[A-Za-z]+$/
+    pageComments.addEventListener("blur", validatecomment)
+    function validatecomment(){
+        if(pageComments.value==null || pageComments.value==undefined){
+            pageComments.style.cssText="border:solid; border-color:red";
+        }else{
+            pageComments.style.cssText="border:solid; border-color:green";
+        }
+    }
+
+    pageLocation.addEventListener("blur", validatelocation)
+    function validatelocation(){
+        pageLocation.style.cssText="border:solid; border-color:green";
+    }
+    
+    pageEmail.addEventListener("blur", validateemail)
+    function validateemail(){
+        pageEmail.style.cssText="border:solid; border-color:green";
+    }
+
+    pagePhonenumber.addEventListener("blur", ()=>{
+        if (pagePhonenumber.value.match(letters)){
+                pagePhonenumber.style.cssText="border:solid; border-color:red;"
+        }else{
+                pagePhonenumber.style.cssText="border:solid; border-color:green;"
+            }
+    })
+    
+    pagename.addEventListener("blur", validatename)
+    function validatename(){
+
+        if (pagename.value.match(letters)){
+            pagename.style.cssText="border:solid; border-color:green;"
+            console.log("yes")
+        }else{
+            pagename.style.cssText="border:solid; border-color:red;"
+            console.log("no")
+        }
+    }
     
 let numberOfRivews=0
 function addperson(){
     //the function below add each record to the database when you click on the submit button
     numberOfRivews++
-    const person1= studentObject(pagename.value, pageEmail.value, pageLocation.value,pagePhonenumber.value, pageCourse.options[pageCourse.selectedIndex].text, pageGender.options[pageGender.selectedIndex].text, pageComments.value, pageRating.value)
+    const person1= studentObject(pagename.value, pageEmail.value, pageLocation.value,pagePhonenumber.value, pageCourse.options[pageCourse.selectedIndex].text, pageGender.options[pageGender.selectedIndex].text, pageComments.value, star)
     listOfStudents.push(person1)
 
     for (item of listOfStudents){
@@ -167,7 +214,7 @@ function addperson(){
         contentcourse.textContent=`Course of choice: ${pageCourse.options[pageCourse.selectedIndex].text}`
         contentgender.textContent=`Gender:${pageGender.options[pageGender.selectedIndex].text}`
         contentcomment.textContent=`Comments: ${pageComments.value}`
-        contentstar.textContent=`Star:  ${pageRating.value}`
+        contentstar.textContent=`Star: it is a test`
         
         contentContainer.appendChild(contentname)
         contentContainer.appendChild(contentemail)
@@ -176,8 +223,8 @@ function addperson(){
         contentContainer.appendChild(contentcourse)
         contentContainer.appendChild(contentgender)
         contentContainer.appendChild(contentcomment)
+        contentContainer.appendChild(contentstar)
         contentContainer.appendChild(deleteButton)
-    // contentContainer.appendChild(contentstar)
         result.appendChild(contentContainer)
 
         function removereview(){
