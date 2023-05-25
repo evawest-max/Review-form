@@ -130,6 +130,7 @@ function studentObject(name, email, location, phoneNumber,course, gender, commen
     const pageComments=document.getElementById("comments")
     const pageRating=document.getElementById("rating")
 
+    let numbs = /^[0-9]+$/
     let letters = /^[A-Za-z]+$/
     pageComments.addEventListener("blur", validatecomment)
     function validatecomment(){
@@ -144,19 +145,26 @@ function studentObject(name, email, location, phoneNumber,course, gender, commen
     function validatelocation(){
         pageLocation.style.cssText="border:solid; border-color:green";
     }
-    
-    pageEmail.addEventListener("blur", validateemail)
-    function validateemail(){
-        pageEmail.style.cssText="border:solid; border-color:green";
-    }
 
     pagePhonenumber.addEventListener("blur", ()=>{
-        if (pagePhonenumber.value.match(letters)){
-                pagePhonenumber.style.cssText="border:solid; border-color:red;"
-        }else{
+        if (pagePhonenumber.value.match(numbs)){
                 pagePhonenumber.style.cssText="border:solid; border-color:green;"
+        }else{
+                pagePhonenumber.style.cssText="border:solid; border-color:red;"
             }
     })
+
+    pageEmail.addEventListener('blur', validateemail)
+    function validateemail(){
+
+        if (pageEmail.value.match("@")){
+            pageEmail.style.cssText="border:solid; border-color:green;"
+            console.log("yes")
+        }else{
+            pageEmail.style.cssText="border:solid; border-color:red;"
+            console.log("no")
+        }
+    }
     
     pagename.addEventListener("blur", validatename)
     function validatename(){
