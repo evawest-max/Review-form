@@ -12,6 +12,8 @@
     const previous=document.getElementById("previous")
     const rating = document.querySelectorAll(".rating i");
 
+
+
         let star=0
     rating.forEach((rate, index1)=>{
         let starclicks=0
@@ -131,7 +133,7 @@ function studentObject(name, email, location, phoneNumber,course, gender, commen
     const pageRating=document.getElementById("rating")
 
     let numbs = /^[0-9]+$/
-    let letters = /^[A-Za-z]+$/
+    let letters = /^[A-Za-z" "]+$/
     pageComments.addEventListener("blur", validatecomment)
     function validatecomment(){
         if(pageComments.value==null || pageComments.value==undefined){
