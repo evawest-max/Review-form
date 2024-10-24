@@ -15,7 +15,7 @@ background: linear-gradient(130deg, rgba(2,0,36,1) 0%, rgba(28,7,102,0.924894957
 
 .navbar-brand{
   font-size: xx-large;
-  border: solid;
+  /* border: solid; */
   font-weight: 900;
   border-radius: 10px;
   font-family: Arial, Helvetica, sans-serif;
@@ -124,10 +124,11 @@ button{
 button:hover{
   transform: scale(1.1);
   background-color: blueviolet;
+  border-radius: 5px;
 }
 .btn-container{
-  justify-content: space-between;
   display: flex;
+  justify-content: space-between;
   background-color: white;
   padding: 0 1rem;
 }
@@ -137,7 +138,8 @@ button:hover{
 /* enrolled course */
 #enrolled-course{
   display: block;
-  padding: 8px 100px 8px 99px;
+  padding: 8px 0px;
+  width: 100%;
   border: 1px solid;
   border-radius: 0.5rem;
   background-color: white;
@@ -146,7 +148,8 @@ button:hover{
 
 #gender{
   display: block;
-  padding: 8px 127px 8px 129px;
+  padding: 8px 0px;
+  width: 100%;
   border: 1px solid;
   border-radius: 0.5rem;
   background-color: white;
@@ -164,7 +167,8 @@ option{
 
 /* textarea */
 textarea{
-  padding: 80px;
+  /* padding: 80px; */
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
